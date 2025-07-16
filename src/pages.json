@@ -1,0 +1,155 @@
+{
+	"pages": [
+		{
+			"path": "pages/welcome/index",
+			"style": {
+				"navigationBarTitleText": "云己 - 意识上传平台",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/auth/login",
+			"style": {
+				"navigationBarTitleText": "云己 - 意识上传平台",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/auth/register",
+			"style": {
+				"navigationBarTitleText": "云己 - 意识上传平台",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/upload/index",
+			"style": {
+				"navigationBarTitleText": "意识上传",
+				"navigationStyle": "custom",
+				"backgroundColor": "#1a1a1a"
+			}
+		},
+		{
+			"path": "pages/upload/minddata",
+			"style": {
+				"navigationBarTitleText": "意识数据上传",
+				"navigationStyle": "custom",
+				"backgroundColor": "#1a1a1a"
+			}
+		},
+		{
+			"path": "pages/upload/voicedata",
+			"style": {
+				"navigationBarTitleText": "声音上传",
+				"navigationStyle": "custom",
+				"backgroundColor": "#1a1a1a"
+			}
+		},
+		{
+			"path": "pages/upload/imagedata",
+			"style": {
+				"navigationBarTitleText": "形象上传",
+				"navigationStyle": "custom",
+				"backgroundColor": "#1a1a1a"
+			}
+		},
+		{
+			"path": "pages/upload/generating",
+			"style": {
+				"navigationBarTitleText": "生成中",
+				"navigationStyle": "custom",
+				"backgroundColor": "#1a1a1a"
+			}
+		},
+		{
+			"path": "pages/upload/complete",
+			"style": {
+				"navigationBarTitleText": "上传完成",
+				"navigationStyle": "custom",
+				"backgroundColor": "#1a1a1a"
+			}
+		},
+		{
+			"path": "pages/consciousness/index",
+			"style": {
+				"navigationBarTitleText": "意识体控制台",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/consciousness/turing/index",
+			"style": {
+				"navigationBarTitleText": "与意识体对话",
+				"navigationStyle": "custom",
+				"backgroundColor": "#1a1a1a"
+			}
+		},
+		{
+			"path": "pages/consciousness/interaction/index",
+			"style": {
+				"navigationBarTitleText": "意识体交互",
+				"navigationStyle": "custom",
+				"backgroundColor": "#000000"
+			}
+		},
+		{
+			"path": "pages/welcome/explore",
+			"style": {
+				"navigationBarTitleText": "探索数字生命",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#999999",
+		"selectedColor": "#000000",
+		"backgroundColor": "#ffffff",
+		"borderStyle": "black",
+		"list": [
+			{
+				"pagePath": "pages/past/index",
+				"text": "往"
+			},
+			{
+				"pagePath": "pages/now/index",
+				"text": "今"
+			},
+			{
+				"pagePath": "pages/future/index",
+				"text": "未"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "云己 - 意识上传平台",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF"
+	},
+	"condition": {
+		"current": 0,
+		"list": [
+			{
+				"name": "登录页",
+				"path": "pages/auth/login"
+			},
+			{
+				"name": "注册页",
+				"path": "pages/auth/register"
+			},
+			{
+				"name": "意识体控制台",
+				"path": "pages/consciousness/index"
+			}
+		]
+	},
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^u-(.*)": "@/components/u-$1/u-$1.vue"
+		}
+	}
+}
