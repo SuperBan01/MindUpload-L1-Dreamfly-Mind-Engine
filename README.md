@@ -85,14 +85,24 @@ Your `.mind` is your portable soul — compressible, storable, shareable, remixa
 
 ## 🧪 Try It / 快速体验
 
-> `Coming Soon`: A hosted version at [https://upme.dev](https://upme.dev) (Q3 2025)
+> `Coming Soon`: A hosted version at [https://upme.cool](https://upme.cool) (Q3 2025)
 
-你也可以本地运行：
+你也可以本地运行,配置好node.js的环境：
+
+【node_modules 环境配置指引】
+
+克隆项目后，先确保已安装 Node.js（v14+）。
+在项目根目录运行：
+
+npm install （或 yarn install）
+
+等待依赖安装完成，即可启动项目。
+若遇权限问题，尝试加 sudo（Linux/macOS）或用管理员终端（Windows）
 
 ```bash
 git clone https://github.com/shorpen/dreamfly-mind-engine
 cd mindcopy/
-python3 run.py --from-personal-dataset ./data/xiaoben/
+npm install
 ```
 
 ---
@@ -106,7 +116,7 @@ python3 run.py --from-personal-dataset ./data/xiaoben/
 * 💡 Genius Thinker - cognitive philosophers, ethical futurists
 
 📞 微信/手机同号：18851751014
-📮 Email: [upme@digitalmind.org](mailto:upme@digitalmind.org)
+📮 Email: [shorpen@everlasting.chat]
 
 🫀 Let’s create a **new kind of legacy**.
 
@@ -122,7 +132,7 @@ If you use this in academic work:
   author={Liu, Xiaoben},
   journal={Nanjing University Thesis + GitHub Whitepaper},
   year={2025},
-  url={https://github.com/shorpen/dreamfly-mind-engine}
+  url={https://github.com/shorpen/mindupload[L1 dreamfly-mind-engine]}
 }
 ```
 
