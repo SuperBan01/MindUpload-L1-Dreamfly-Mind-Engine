@@ -73,7 +73,7 @@ Your `.mind` is your portable soul — compressible, storable, shareable, remixa
 
 > “我希望复活乔布斯，并且永恒记录下一个‘乔布斯’的灵魂与思想。”
 
-我是 **刘骁奔（shorpen）**，来自南京大学哲学系，两年前我向世界宣布：我要实现意识上传。如今 L1 已落地，.mind 文件已可生成与永久保存，你可以通过梦蝶心智引擎对你的.mind文件进行解码，驱动你的意识体。
+我是 **刘骁奔（shorpen）**，来自Everlasting AI，两年前我向世界宣布：我要实现意识上传。如今 L1 已落地，.mind 文件已可生成与永久保存，你可以通过梦蝶心智引擎对你的.mind文件进行解码，驱动你的意识体。
 
 🎓 硕士论文：《意识上传第一范式：理论、技术与主体连续性探讨》
 📚 相关思考发布页：[DreamFly Mind Model (EN)](https://mp.weixin.qq.com/s/mlx8rfPxfXHQr036X3-kwQ)
