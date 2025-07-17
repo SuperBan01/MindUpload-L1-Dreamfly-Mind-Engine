@@ -1,4 +1,4 @@
-# mindupload
+# minduploading
 ## `README.md`
 
 # 🧠 DreamFly Mind Engine · 云己 · Mind Uploading L1 Framework
