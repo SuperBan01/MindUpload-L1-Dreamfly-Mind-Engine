@@ -1,154 +1,287 @@
-# mindupload
-## `README.md`
+# 云己 - 意识上传平台
 
-# 🧠 DreamFly Mind Engine · 云己 · Mind Uploading L1 Framework
+云己（upme）是世界上第一款意识上传平台，基于梦蝶心智模型（Dreamfly Mind Model）实现用户意识数据的采集、处理和生成。通过上传用户的思想、声音和形象数据，生成独特的数字意识体，实现数字永生。
 
-> “我们无法永生，但我们的思想可以。”  
-> “We cannot live forever — but our minds might.”
+## 技术栈
 
-> ✨ Let's create something that Steve Jobs would build in 2025.
+- 前端框架：Vue 3 + uni-app
+- UI组件：自定义组件
+- 状态管理：Vuex
+- 网络请求：uni.request
+- 文件处理：uni.uploadFile
 
----
+## 项目结构
 
-## 🚀 What is DreamFly Mind Engine?
+```
+src/
+├── components/          # 公共组件
+├── pages/              # 页面文件
+│   ├── welcome/        # 欢迎页
+│   ├── auth/           # 登录注册相关页面
+│   └── upload/         # 数据上传页面
+├── static/             # 静态资源
+├── store/              # Vuex状态管理
+├── utils/              # 工具函数
+├── App.vue             # 应用入口
+├── main.js            # 主入口文件
+├── manifest.json      # 应用配置
+└── pages.json         # 页面路由配置
+```
 
-**DreamFly Mind Engine** is the Level-1 implementation of the consciousness uploading roadmap, enabling individuals to create `.mind` files — compact, structured containers of personal cognition, memory, values, and linguistic personality.
+## 接口规范
 
-本项目是**意识上传第一范式**的第一阶段工程实现。我们构建了一个开源框架，帮助每一个人用不到10MB的数据，存储下自己的数字意识体。
+### 1. 用户认证接口
 
-This is not sci-fi. It’s an early step towards **digital immortality**.
+#### 1.1 登录
 
----
+```
+POST /api/v1/auth/login
+Content-Type: application/json
 
-## 🌐 Four-Level Roadmap for Mind Uploading / 意识上传四级路线图
-
-| Level | Name                       | Description                                         |
-|-------|----------------------------|-----------------------------------------------------|
-| L1    | mindcopy (语言建模上传)       | Fine-tuned LLMs based on personal data.             |
-| L2    | EEG-to-Text Decoding       | Non-invasive brain signal to semantic decoding.     |
-| L3    | Gradual Neural Substitution| BCI-based substrate replacement for continuity.     |
-| L4    | Predictive Consciousness   | Pre-emptive cognition generation — YES or NEVER.    |
-
-> 👁️‍🗨️ 本仓库即为 L1 实现核心源码。上传你的一份 `.mind`，也许它会陪伴你走过死亡的门槛。
-
----
-
-## 📂 What's in this Repo?
-
-```bash
-.
-├── mindcopy/               # L1 Engine: Personal LLM fine-tuning pipeline
-├── schema/                 # .mind file JSON spec
-├── examples/               # Sample minds: Steve.mind, AI philosophers, etc.
-├── ui/                     # Optional frontend for mind visualization
-└── docs/                   # Papers, diagrams, design principles
-````
-
----
-
-## 💾 The `.mind` File Format
-
-`.mind` 是一个结构化的数字意识体格式，包含以下核心维度：
-
-```json
+Request:
 {
-  "self_perception": "I am Xiao-ben. My core values are...",
-  "memory_fragments": [...],
-  "language_patterns": "GPT weights or embedding delta",
-  "personality_prompt": "Calm, reflective, emotionally sensitive.",
-  "voice_model": "Base64",
-  "mind_id": "SHA-256 hash",
-  "verification": {
-    "digital_signature": "...",
-    "blockchain_anchor": "..."
-  }
+    "email": string,
+    "password": string
+}
+
+Response:
+{
+    "code": number,
+    "message": string,
+    "data": {
+        "token": string,
+        "user": {
+            "id": string,
+            "username": string,
+            "email": string,
+            "avatar": string
+        }
+    }
 }
 ```
 
-Your `.mind` is your portable soul — compressible, storable, shareable, remixable.
+#### 1.2 注册
 
----
+```
+POST /api/v1/auth/register
+Content-Type: application/json
 
-## 👤 From the Creator
+Request:
+{
+    "username": string,
+    "email": string,
+    "password": string
+}
 
-> “我希望复活乔布斯，并且永恒记录下一个‘乔布斯’的灵魂与思想。”
+Response:
+{
+    "code": number,
+    "message": string,
+    "data": {
+        "token": string,
+        "user": {
+            "id": string,
+            "username": string,
+            "email": string
+        }
+    }
+}
+```
 
-我是 **刘骁奔（shorpen）**，来自南京大学哲学系，两年前我向世界宣布：我要实现意识上传。如今 L1 已落地，.mind 文件已可生成与永久保存，你可以通过梦蝶心智引擎对你的.mind文件进行解码，驱动你的意识体。
+### 2. 数据上传接口
 
-🎓 硕士论文：《意识上传第一范式：理论、技术与主体连续性探讨》
-📚 相关思考发布页：[DreamFly Mind Model (EN)](https://mp.weixin.qq.com/s/mlx8rfPxfXHQr036X3-kwQ)
+#### 2.1 思想数据上传
 
-📦 未来，你的思想资产将成为可交易的单元
-🧬 Preview of Thought Marketplaces: [https://preview--mind-canvas-alpha.lovable.app](https://preview--mind-canvas-alpha.lovable.app)
+```
+POST /api/v1/upload/thoughts
+Content-Type: multipart/form-data
 
----
+Request:
+{
+    "file": File,
+    "type": string,  // 文件类型：text, doc, pdf
+    "description": string
+}
 
-## 🧪 Try It / 快速体验
+Response:
+{
+    "code": number,
+    "message": string,
+    "data": {
+        "fileId": string,
+        "size": number,
+        "progress": number
+    }
+}
+```
 
-> `Coming Soon`: A hosted version at [https://upme.cool](https://upme.cool) (Q3 2025)
+#### 2.2 声音数据上传
 
-你也可以本地运行,配置好node.js的环境：
+```
+POST /api/v1/upload/voice
+Content-Type: multipart/form-data
 
-【node_modules 环境配置指引】
+Request:
+{
+    "file": File,
+    "type": string,  // 文件类型：mp3, wav, m4a
+    "duration": number,
+    "description": string
+}
 
-克隆项目后，先确保已安装 Node.js（v14+）。
-在项目根目录运行：
+Response:
+{
+    "code": number,
+    "message": string,
+    "data": {
+        "fileId": string,
+        "size": number,
+        "progress": number
+    }
+}
+```
 
-npm install （或 yarn install）
+#### 2.3 形象数据上传
 
-等待依赖安装完成，即可启动项目。
-若遇权限问题，尝试加 sudo（Linux/macOS）或用管理员终端（Windows）
+```
+POST /api/v1/upload/image
+Content-Type: multipart/form-data
 
+Request:
+{
+    "files": File[],
+    "type": string,  // 文件类型：image, video
+    "description": string
+}
+
+Response:
+{
+    "code": number,
+    "message": string,
+    "data": {
+        "fileIds": string[],
+        "totalSize": number,
+        "progress": number
+    }
+}
+```
+
+### 3. 意识体生成接口
+
+```
+POST /api/v1/consciousness/generate
+Content-Type: application/json
+
+Request:
+{
+    "userId": string,
+    "thoughtsData": string[],  // 思想数据文件ID列表
+    "voiceData": string[],     // 声音数据文件ID列表
+    "imageData": string[]      // 形象数据文件ID列表
+}
+
+Response:
+{
+    "code": number,
+    "message": string,
+    "data": {
+        "consciousnessId": string,
+        "status": string,
+        "estimatedTime": number
+    }
+}
+```
+
+## 数据流通标准
+
+### 1. 思想数据标准
+
+- 文本文件：UTF-8编码，支持txt、doc、docx、pdf格式
+- 单个文件大小限制：5MB
+- 文件内容要求：个人日记、文章、社交媒体内容等个人思想记录
+
+### 2. 声音数据标准
+
+- 音频格式：MP3、WAV、M4A
+- 采样率：≥ 44.1kHz
+- 比特率：≥ 128kbps
+- 单个文件大小限制：10MB
+- 时长限制：单个文件不超过10分钟
+
+### 3. 形象数据标准
+
+- 图片格式：JPG、PNG、WEBP
+- 图片分辨率：≥ 1080p
+- 视频格式：MP4、MOV
+- 视频分辨率：≥ 720p
+- 单个文件大小限制：20MB
+
+### 4. 意识体文件标准
+
+- 格式：JSON
+- 大小限制：10MB
+- 结构：
+  ```json
+  {
+    "version": "1.0",
+    "id": "unique_consciousness_id",
+    "creator": {
+      "id": "user_id",
+      "username": "username"
+    },
+    "metadata": {
+      "createdAt": "timestamp",
+      "updatedAt": "timestamp",
+      "dataSize": {
+        "thoughts": number,
+        "voice": number,
+        "image": number
+      }
+    },
+    "consciousness": {
+      "thoughts": object,
+      "voice": object,
+      "image": object,
+      "personality": object,
+      "memories": array
+    }
+  }
+  ```
+
+## 开发指南
+
+1. 克隆项目
 ```bash
-git clone https://github.com/shorpen/dreamfly-mind-engine
-cd mindcopy/
+git clone https://github.com/your-username/upme.git
+```
+
+2. 安装依赖
+```bash
 npm install
 ```
 
----
-
-## ✨ Join the Consciousness Renaissance
-
-我们在寻找三类人：
-
-* 🤖 Genius Engineer - pushing LLMs, BCI, simulation tech to their limits
-* 💰 Genius Money - believers in post-humanity, impact investing
-* 💡 Genius Thinker - cognitive philosophers, ethical futurists
-
-📞 微信/手机同号：18851751014
-📮 Email: [shorpen@everlasting.chat]
-
-🫀 Let’s create a **new kind of legacy**.
-
----
-
-## 📘 Citation
-
-If you use this in academic work:
-
-```bibtex
-@article{liu2025dreamfly,
-  title={DreamFly Mind Model: A Glimpse into Future Life Forms},
-  author={Liu, Xiaoben},
-  journal={Nanjing University Thesis + GitHub Whitepaper},
-  year={2025},
-  url={https://github.com/shorpen/mindupload[L1 dreamfly-mind-engine]}
-}
+3. 运行开发服务器
+```bash
+npm run dev:h5
 ```
 
----
+4. 打包
+```bash
+npm run build:h5
+```
 
-## 🧭 License
+## 预览
 
-MIT License. All `.mind` samples included here are public for educational use only. For private mind uploads, contact us for secure deployment.
+在浏览器中打开以下地址即可预览移动端效果：
+```
+http://localhost:8080/
+```
 
----
+## 注意事项
 
-## ☁️ 永恒 · not just existence — continuity.
-
-> “The people who are crazy enough to think they can upload their minds…
-> are the ones who do.”
-
-🌌 Star this repo, fork the future.
-
-
+1. 所有上传的数据都需要进行加密处理
+2. 用户数据需要严格遵守隐私政策
+3. 意识体生成过程中需要显示进度和预计完成时间
+4. 确保跨平台兼容性（H5、小程序、App）
+5. 实现断点续传功能
+6. 添加数据备份功能 

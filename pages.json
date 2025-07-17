@@ -1,0 +1,12 @@
+{
+  "pages": [
+    {
+      "path": "pages/consciousness/personality/ttfd",
+      "style": {
+        "navigationBarTitleText": "TTFD意识同步测试",
+        "navigationStyle": "custom",
+        "backgroundColor": "#1a1a1a"
+      }
+    }
+  ]
+} 
